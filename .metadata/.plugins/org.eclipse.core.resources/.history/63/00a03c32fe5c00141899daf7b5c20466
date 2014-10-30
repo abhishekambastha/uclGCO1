@@ -1,0 +1,27 @@
+package tutorial5;
+import java.awt.BorderLayout;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+
+@SuppressWarnings("serial")
+public class MainWindow extends JFrame{
+	public MainWindow(String title){
+		super(title);
+		
+		setLayout(new BorderLayout());
+		
+		JTextArea textArea = new JTextArea();
+		JButton button = new JButton("Click Here");
+		JButton button2 = new JButton("Click Here also");
+		
+		Container contain = getContentPane();
+		
+		contain.add(textArea, BorderLayout.NORTH);
+		contain.add(button, BorderLayout.SOUTH);
+		contain.add(button, BorderLayout.CENTER);
+	}
+}

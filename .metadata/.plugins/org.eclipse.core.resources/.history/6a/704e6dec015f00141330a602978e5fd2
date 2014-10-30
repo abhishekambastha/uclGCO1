@@ -1,0 +1,43 @@
+package exercise5.Ex4;
+
+import java.awt.BorderLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
+import javax.swing.JFrame;
+
+public class MainFrame extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static CompDetails details = new CompDetails();
+
+	public MainFrame(String s){
+		super(s);
+		setLayout(new BorderLayout());
+		
+		add(new ControlPanel(new Drag(this.getLocation())), BorderLayout.CENTER);
+		add(details, BorderLayout.SOUTH);
+		System.out.println(this.getLocation());
+		this.addMouseMotionListener(new MouseMotionListener(){
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println(e.getComponent().getLocationOnScreen());
+				
+			}
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				
+				
+			}
+			
+		});
+		
+		
+	}
+}

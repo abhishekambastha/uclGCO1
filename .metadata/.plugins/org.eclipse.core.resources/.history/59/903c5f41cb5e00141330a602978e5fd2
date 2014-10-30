@@ -1,0 +1,37 @@
+package exercise4;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Score extends JPanel implements ActionListener{
+
+		/**
+	 * 
+	 */
+	
+	public static int score = 0;
+	private static final long serialVersionUID = -6834663162927227083L;
+	
+	JLabel scoreLabel = new JLabel("Score For Now is " + score);
+
+		public Score(){
+			
+			scoreLabel.setText("Score For Now is " + score);
+			setLayout(new GridLayout(1,0));
+			add(scoreLabel);
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+
+		public void update(boolean increase){
+			scoreLabel.setText("Score For Now is " + score);
+		}
+	
+}

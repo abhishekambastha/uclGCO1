@@ -1,0 +1,6 @@
+a	1
+b	2
+Abhi	8
+Ab	6
+Name	4
+new	3

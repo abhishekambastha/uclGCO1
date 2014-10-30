@@ -1,0 +1,9 @@
+package exercise5.Ex4;
+
+import javax.swing.JPanel;
+
+public class ControlPanel extends JPanel {
+	public ControlPanel(){
+		super();
+	}
+}

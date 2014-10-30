@@ -1,0 +1,27 @@
+package exercise2;
+
+import java.util.ArrayList;
+
+public class Currency {
+
+	ArrayList<String> currency = new ArrayList<String>();
+	
+	public Currency(){
+		super();
+		currency.add("USD");
+		currency.add("GBP");
+		currency.add("YEN");
+		currency.add("EU");
+	}
+	
+	public double getConversion(double value, String currency){
+		switch(currency){
+		case "USD": break;
+		case "GBP": break;
+		case "EU": break;
+		case "YEN": break;
+		}
+		return 0;
+	}
+
+}

@@ -1,0 +1,10 @@
+package exercise2;
+
+import java.util.ArrayList;
+
+public class Currency {
+
+	ArrayList<String> currency = new ArrayList<String>();
+
+	
+}

@@ -1,0 +1,13 @@
+package exercise2;
+
+import javax.swing.JFrame;
+
+public class Controller {
+
+	public static void main(String...args){
+		JFrame frame = new JFrame("Currency Converter");
+		frame.setSize(300,300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}
+}

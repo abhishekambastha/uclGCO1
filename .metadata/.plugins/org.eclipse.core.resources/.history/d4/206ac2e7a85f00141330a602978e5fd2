@@ -1,0 +1,38 @@
+package exercise4;
+
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Score extends JPanel{
+
+		/**
+	 * 
+	 */
+	
+	public static int score = 0;
+	private static final long serialVersionUID = -6834663162927227083L;
+	
+	JLabel scoreLabel = new JLabel("Score For Now is " + score);
+	JButton quitGame = new JButton("Quit");
+	String[] levelChoice = {"easy", "medium", "hard"};
+	JComboBox<String> level = new JComboBox<String>(levelChoice); 
+
+		public Score(){
+			
+			scoreLabel.setText("Your Score: " + score);
+			setLayout(new GridLayout(1,3));
+			add(scoreLabel);
+			add(level);
+			add(quitGame);
+		}
+
+		public void update(boolean increase){
+			score = (increase)? (score+1):(score);
+			scoreLabel.setText("Your Score: " + score);
+		}
+	
+}

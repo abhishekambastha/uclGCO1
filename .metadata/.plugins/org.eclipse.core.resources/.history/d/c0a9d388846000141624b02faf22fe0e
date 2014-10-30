@@ -1,0 +1,18 @@
+package l04;
+
+public class convert {
+	public static void main(String args[]){
+		inch abc = new inch(5);
+		
+		yards user1=new yards(10);
+	}
+	
+	int numebr;
+	char a;
+	
+	public int method(){
+		return 0;
+	}
+
+
+}

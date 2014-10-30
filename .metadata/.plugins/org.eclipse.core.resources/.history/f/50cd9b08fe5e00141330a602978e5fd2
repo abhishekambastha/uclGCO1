@@ -1,0 +1,34 @@
+package exercise5.Ex4;
+
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
+
+public class Drag implements MouseMotionListener{
+
+	public static String componentName="";
+	public static String componentLocation="";
+	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		//		System.out.println(e.getLocationOnScreen());
+		Point p = e.getLocationOnScreen();
+		Point init = e.getComponent().getLocation();
+		p.setLocation(p.getX()-25, p.getY()-50);
+	
+		componentLocation = "[" + p.getX() + "; " + p.getY() + "]";
+		componentName = e.getComponent().getClass() + "";
+		componentName = componentName.substring(18);
+		
+		e.getComponent().setLocation(p);
+
+		MainFrame.details.update("" + componentName + " is at " + componentLocation);
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+
+	}
+
+}

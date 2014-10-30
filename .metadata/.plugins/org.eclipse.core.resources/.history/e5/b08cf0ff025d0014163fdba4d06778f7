@@ -1,0 +1,34 @@
+package tutorial5;
+
+import java.awt.Dimension;
+import java.awt.LayoutManager;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class DetailsPanel extends JPanel {
+
+	public DetailsPanel() {
+		Dimension size = getPreferredSize();
+		size.width = 10;
+		setPreferredSize(size);
+		setBorder(BorderFactory.createBevelBorder(2));
+	}
+
+	public DetailsPanel(LayoutManager layout) {
+		super(layout);
+		// TODO Auto-generated constructor stub
+	}
+
+	public DetailsPanel(boolean isDoubleBuffered) {
+		super(isDoubleBuffered);
+		// TODO Auto-generated constructor stub
+	}
+
+	public DetailsPanel(LayoutManager layout, boolean isDoubleBuffered) {
+		super(layout, isDoubleBuffered);
+		// TODO Auto-generated constructor stub
+	}
+
+}

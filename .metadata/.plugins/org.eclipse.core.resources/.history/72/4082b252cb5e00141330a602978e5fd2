@@ -1,0 +1,37 @@
+package exercise4;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class LabelClick implements MouseListener{
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		MainFrame.score.score++;
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		MainFrame.score.update(true);
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package exercise5.Ex4;
+
+import javax.swing.JLabel;
+
+public class CompDetails extends JPanel {
+	JLabel resultC = new JLabel("Lets see");
+	
+	public CompDetails(){
+		add(resultC);
+	}
+
+}

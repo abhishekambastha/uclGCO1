@@ -1,0 +1,58 @@
+/*
+ * WHACK A MOLE GAME
+ * 
+ * store results in file 
+ * add parameters for difficulty levels
+ * 
+ * increase speed with time!
+ */
+package exercise4;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+
+public class Controller {
+	int speed = 800;
+	
+	public static void main(String...args){
+
+		JFrame frame = new MainFrame("WHACK A MOLE!!");
+		SwingUtilities.invokeLater(new Runnable(){
+			public void run() {
+				frame.setSize(600,620);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setVisible(true);
+			}
+		});
+
+		
+		int reviseSpeedInterval = 1000;
+		
+		Timer gameTimer = new Timer(speed, MainFrame.gpanel);
+		gameTimer.start();
+		
+		Timer timer = new Timer(reviseSpeedInterval, new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameTimer.stop();
+				speed = speed/10;
+				gameTimer.setDelay(speed);
+				gameTimer.start();
+				
+			}});
+		timer.start();
+		
+		
+		
+	}
+	
+	public void actionPerformed(ActionEvent e, int speed){
+		
+	}
+	
+}

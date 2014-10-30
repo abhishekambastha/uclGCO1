@@ -1,0 +1,20 @@
+package exercise5.Ex3;
+
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
+public class FocusListen implements FocusListener {
+
+	@Override
+	public void focusGained(FocusEvent e) {
+		MainFrame.msg.setText(" is Focused");
+		System.out.println(e.getComponent().getClass() instanceof Object);
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		MainFrame.msg.setText( " was Focused");
+		
+	}
+
+}

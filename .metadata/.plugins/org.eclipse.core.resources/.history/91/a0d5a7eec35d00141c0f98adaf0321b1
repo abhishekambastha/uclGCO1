@@ -1,0 +1,16 @@
+package exercise2;
+
+import java.util.ArrayList;
+
+public class Currency {
+
+	ArrayList<String> currency = new ArrayList<String>();
+	public Currency(){
+		super();
+		currency.add("USD");
+		currency.add("GBP");
+		currency.add("YEN");
+		currency.add("EU");
+	}
+
+}

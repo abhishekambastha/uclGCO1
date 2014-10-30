@@ -1,0 +1,27 @@
+package exercise3;
+
+import java.awt.Container;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import exercise2.CurrencyPanel;
+
+public class MainFrame extends JFrame{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public MainFrame(String s) {
+		super(s);
+		Container contents = getContentPane();
+
+		setLayout(new GridLayout(1,0));
+		JPanel panel= new OldEntry();
+		contents.add(panel);
+	}
+
+}
