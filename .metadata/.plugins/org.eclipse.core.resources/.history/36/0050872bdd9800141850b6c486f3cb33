@@ -1,0 +1,33 @@
+package helper;
+import java.io.IOException;
+import java.io.StringWriter;
+
+import org.json.simple.JSONObject;
+
+public class JSONhandle {
+	 public static void readJSon() 
+	   {
+	      JSONObject obj = new JSONObject();
+
+	      
+	      obj.put("name","foo");
+	      obj.put("num",100);
+	      obj.put("balance",100.12);
+	      obj.put("is_vip",true);
+
+	      StringWriter out = new StringWriter();
+	      
+	      try {
+			obj.writeJSONString(out);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	      
+	      String jsonText = out.toString();
+	      System.out.print(jsonText);
+	   }
+	 
+	 public static void writeJSON(){
+		 
+	 }
+}

@@ -1,0 +1,31 @@
+package settingsMode;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class SettingsMode extends JPanel {
+	private static final long serialVersionUID = -1909876781076670357L;
+
+	public SettingsMode(){
+		super();
+		
+		setLayout(new GridBagLayout());
+		GridBagConstraints gc = new GridBagConstraints();
+		
+		
+		gc.gridx=0;
+		gc.gridy=0;
+		JLabel settingsLabel = new JLabel("This is settings Page");
+		add(settingsLabel, gc);
+		
+		gc.gridx=0;
+		gc.gridy =1;
+		JCheckBox recordActions = new JCheckBox("Record Actions ?");
+		add(recordActions, gc);
+	}
+
+}

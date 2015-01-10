@@ -1,7 +1,0 @@
-package exercise4;
-
-import javax.swing.JFrame;
-
-public class ExitFrame extends JFrame {
-
-}

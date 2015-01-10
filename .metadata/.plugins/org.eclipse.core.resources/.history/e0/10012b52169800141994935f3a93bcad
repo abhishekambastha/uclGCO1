@@ -1,0 +1,27 @@
+package simpleMode;
+
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class SimpleMode extends JPanel {
+	public SimpleMode(){
+		JButton simple = new JButton("Snap");
+		setLayout(new GridBagLayout());
+		add(simple);
+		simple.setBounds(0, 0, 200, 100);
+		
+		simple.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				Toolkit.getDefaultToolkit().beep();
+			}
+		});
+	}
+
+}

@@ -1,0 +1,31 @@
+package helper;
+
+import java.awt.event.MouseEvent;
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.event.MouseInputAdapter;
+
+public class MouseDrag extends MouseInputAdapter {
+	
+	Ellipse2D ep1;
+	Ellipse2D ep2;
+	Ellipse2D selected;
+	
+	public MouseDrag(Ellipse2D ep1, Ellipse2D ep2){
+		super();
+		this.ep1=ep1;
+		this.ep2=ep2;
+	}
+	
+	public void mousePressed(MouseEvent e) {
+		if(ep1.contains(e.getX(), e.getY())){
+			selected = ep1;
+		}else if(ep2.contains(e.getX(), e.getY())){
+			selected = ep2;
+		}
+		
+	}
+	public void mouseReleased(MouseEvent e) {}
+	public void mouseDragged(MouseEvent e) {}
+
+}

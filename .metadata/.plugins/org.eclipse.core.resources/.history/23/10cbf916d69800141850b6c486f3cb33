@@ -1,0 +1,27 @@
+import java.io.FileInputStream;
+
+import javazoom.jl.player.Player;
+
+
+public class Click {
+
+	String fileName = "C:/Users/user/Documents/snap.mp3";
+	
+	private static Click click = new Click();
+	
+	public void playSounds(){
+		try{
+			FileInputStream fis = new FileInputStream(fileName);
+			Player playMP3 = new Player(fis);
+		    playMP3.play();
+		}
+		catch(Exception exc){
+		    exc.printStackTrace();
+		    System.out.println("Failed to play the file.");
+		}
+	}
+	
+	public static void snap(){
+		click.playSounds();
+	}
+}

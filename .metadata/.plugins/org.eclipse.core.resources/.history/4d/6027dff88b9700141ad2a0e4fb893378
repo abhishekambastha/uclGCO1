@@ -1,0 +1,6 @@
+package timeWarpMode;
+
+public interface TimeWarpListener {
+
+	public void TimeWarpOccured();
+}

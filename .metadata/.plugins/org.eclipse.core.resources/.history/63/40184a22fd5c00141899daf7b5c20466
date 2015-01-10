@@ -1,8 +1,0 @@
-package tutorial5;
-import javax.swing.JFrame;
-
-public class MainWindow extends JFrame{
-	public MainWindow(String title){
-		super(title);
-	}
-}

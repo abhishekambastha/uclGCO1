@@ -1,0 +1,9 @@
+package application;
+
+import javax.swing.JPanel;
+
+public class TimerMenu extends JPanel {
+
+	private static final long serialVersionUID = -321640520366017219L;
+
+}

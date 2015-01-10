@@ -1,0 +1,8 @@
+package snippet;
+
+public class Snippet {
+	public static void main(String[] args) {
+		new ImageIcon(this.getClass().getResource("/mic.png")).getImage()
+	}
+}
+

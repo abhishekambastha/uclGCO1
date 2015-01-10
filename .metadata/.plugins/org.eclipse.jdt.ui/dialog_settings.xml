@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="JavaSE-1.8" key="org.eclipse.jdt.ui.last.selected.execution.enviroment"/>
-	<item value="/Users/abhi/Downloads/guava" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="/Users/abhi/Downloads/JLayer1.0.1 2" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="filter_imports;" key="filters_last_used"/>
 	<section name="DialogBounds_SuperInterfaceSelectionDialog">
 		<item value="356" key="DIALOG_WIDTH"/>
@@ -21,9 +21,9 @@
 		<item value="true" key="ShowStatusLine"/>
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History/&gt;" key="History"/>
 		<section name="DialogBoundsSettings">
-			<item value="600" key="DIALOG_WIDTH"/>
-			<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
-			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="269" key="DIALOG_WIDTH"/>
+			<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
+			<item value="432" key="DIALOG_HEIGHT"/>
 			<item value="-32" key="DIALOG_X_ORIGIN"/>
 			<item value="0" key="DIALOG_Y_ORIGIN"/>
 		</section>
@@ -35,9 +35,22 @@
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
 	</section>
+	<section name="org.eclipse.jdt.internal.ui.typehierarchy.QuickHierarchy">
+		<item value="true" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_SIZE"/>
+		<item value="300" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_HEIGHT"/>
+		<item value="350" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_WIDTH"/>
+		<item value="false" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
+	</section>
 	<section name="org.eclipse.jdt.internal.ui.dialogs.OpenTypeSelectionDialog2">
 		<item value="true" key="ShowStatusLine"/>
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History/&gt;" key="History"/>
+	</section>
+	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
+		<item value="520" key="DIALOG_WIDTH"/>
+		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
+		<item value="639" key="DIALOG_HEIGHT"/>
+		<item value="267" key="DIALOG_X_ORIGIN"/>
+		<item value="-11" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
 		<item value="true" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_SIZE"/>
@@ -119,6 +132,12 @@
 			<item value=".xml"/>
 		</list>
 	</section>
+	<section name="SourceActionDialog.methods">
+		<item value="false" key="SynchronizedModifier"/>
+		<item value="false" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
+		<item value="false" key="FinalModifier"/>
+	</section>
 	<section name="ClasspathContainerSelectionPage">
 		<item value="3" key="index"/>
 	</section>
@@ -138,6 +157,10 @@
 		<item value="2" key="pageIndex"/>
 	</section>
 	<section name="completion_proposal_size">
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item value="false" key="SortOrdering"/>
+		<item value="false" key="RemoveFinal"/>
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>

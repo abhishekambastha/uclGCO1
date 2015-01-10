@@ -1,0 +1,11 @@
+import java.awt.Component;
+
+
+public class TimeLapse {
+
+	public Component getHome3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,27 @@
+package application;
+
+import java.awt.GridLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class TimerMenu extends JPanel {
+
+	private static final long serialVersionUID = -321640520366017219L;
+	
+	JLabel timeWarp;
+	JLabel timeLapse;
+	
+	public TimerMenu(){
+		
+		setLayout(new GridLayout(2,0));
+		timeLapse = new JLabel("TimeLapse");
+		timeWarp = new JLabel("TimeWarp");
+		
+		add(timeLapse);
+		add(timeWarp);
+		
+		
+	}
+
+}

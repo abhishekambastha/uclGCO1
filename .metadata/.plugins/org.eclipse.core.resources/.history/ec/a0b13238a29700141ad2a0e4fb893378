@@ -1,0 +1,163 @@
+package timeWarpMode;
+
+import java.awt.Toolkit;
+import java.awt.geom.Point2D;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class TimeWarpLogic {
+
+
+	//Initial and final coordinates
+	private Point2D.Double start;
+	private Point2D.Double end;
+
+	//Control Points
+	private Point2D.Double cp1 = new Point2D.Double(450, 450);
+	private Point2D.Double cp2 = new Point2D.Double(50, 50);
+
+	//Variables for calculation of firing events
+	private Queue<Double> pendingQ;
+	private static double timeElapsed;
+	private int snaps =0;
+	private double timeInterval;
+
+	//Timer
+
+	Timer timer;
+
+
+	public TimeWarpLogic(Point2D.Double start, Point2D.Double cp1, Point2D.Double cp2, Point2D.Double end, int snaps, double timeInterval){
+		this.start = start;
+		this.end = end;
+		this.cp1 = cp1;
+		this.cp2 = cp2;
+		this.snaps = snaps;
+		this.timeInterval = timeInterval;
+		timeElapsed=0;
+	}
+
+	//Helper Functions
+	private double bezierPoint(double y0, double y1, double y2, double y3, double t){
+		double y = (1 - t) * (1 - t) * (1 - t) * y0 + 3 * (1 - t) * (1 - t) * t * y1 + 3 * (1 - t) * t * t * y2 + t * t * t * y3;
+		return y;
+	}
+
+
+	private double getT(double y0, double y1, double y2, double y3, double targetY, double start, double end){
+		double tempT = (start + end) / 2;
+		double tempY = bezierPoint(y0, y1, y2, y3, tempT);
+
+		while (Math.abs(tempY - targetY) / targetY > 0.001){
+			if (tempY > targetY){
+				end = tempT;
+			}
+			else{
+				start = tempT;
+			}
+
+			tempT = (start + end) / 2;
+			tempY = bezierPoint(y0, y1, y2, y3, tempT);
+		}
+
+		return tempT;
+	}
+
+	private Queue<Double> getSnappingQueue(Point2D P0, Point2D P1, Point2D P2, Point2D P3, int numSnaps, double totalTime){
+		Queue<Double> pending = new LinkedList<Double>();
+
+		double rangeY = P3.getY() - P0.getY();
+		double rangeX = P3.getX() - P0.getX();
+
+		for (int i = 0; i < numSnaps; i++) {
+			double y = rangeY * (1.0 * i / (numSnaps - 1));
+
+			double t = getT(P0.getY(), P1.getY(), P2.getY(), P3.getY(), y, 0, 1);
+
+			double x = (1 - t) * (1 - t) * (1 - t) * P0.getX() + 3 * (1 - t) * (1 - t) * t * P1.getX() + 3 * (1 - t) * t * t * P2.getX() + t * t * t * P3.getX();
+
+			double time = (x / rangeX) * totalTime;
+			pending.add(time);
+
+		}
+		return pending;
+	}
+
+	private void startSnapping()
+	{
+
+		Point2D P0 = new Point2D.Double(start.getX(), start.getY());
+		Point2D P3 = new Point2D.Double(end.getX(), end.getY());
+
+		Point2D P1 = new Point2D.Double(cp1.getX(), cp1.getY());
+		Point2D P2 = new Point2D.Double(cp2.getX(), cp2.getY());
+
+		int interval = (int) (this.timeInterval * 1000);
+
+		//transform origin
+		double P0y = 450 - P0.getY();  double P0x = P0.getX();
+		double P1y = 450 - P1.getY();  double P1x = P1.getX();
+		double P2y = 450 - P2.getY();  double P2x = P2.getX();
+		double P3y = 400 - P3.getY();  double P3x = P3.getX();
+
+		P0.setLocation(P0x, P0y);
+		P1.setLocation(P1x, P1y);
+		P2.setLocation(P2x, P2y);
+		P3.setLocation(P3x, P3y);
+
+		//compute pending tasks and start the timer
+		pendingQ = getSnappingQueue(P0, P1, P2, P3, snaps, interval);
+		timer.schedule(new SnapTask(), 0, 150);
+	}
+
+
+	public boolean snap(int snaps, double interval){
+		boolean running = false;
+		this.snaps = snaps;
+		this.timeInterval = interval;
+		timeElapsed=0;
+		if(timer == null){
+			timer = new Timer();
+			startSnapping();
+			running = true;
+		}else{
+			timer.cancel();
+			timer = null;
+			running = false;
+			
+		}
+
+		return running;
+	}
+
+	class SnapTask extends TimerTask {
+
+		public void run() {
+
+			timeElapsed += 150;
+			int snapsRemaining = pendingQ.size();
+
+			if (snapsRemaining != 0){
+				double timeOfSnap = pendingQ.peek();
+				if (timeOfSnap <= timeElapsed){
+					pendingQ.poll();
+					System.out.println("Click!! " + pendingQ.size() + " Fired at " + timeElapsed );
+					TimeWarp.updateCounter(snaps - pendingQ.size());
+					Toolkit.getDefaultToolkit().beep();
+				}
+			}else{
+				timeElapsed=0;
+				if(timer != null){
+					timer.cancel();
+					timer = null;
+					//TimeWarp.resetState();
+				}
+
+			}
+
+		}
+	}
+
+}

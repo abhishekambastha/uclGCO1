@@ -1,0 +1,64 @@
+package helper;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
+
+import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
+public class JSONhandle {
+	@SuppressWarnings("unchecked")
+	public static void writeJSon() 
+	{
+		JSONObject obj = new JSONObject();
+
+
+		obj.put("name","foo");
+		obj.put("num",100);
+		obj.put("balance",100.12);
+		obj.put("is_vip",true);
+
+		StringWriter out = new StringWriter();
+
+		String jsonText = out.toString();
+		System.out.print(jsonText);
+
+		try {
+			FileUtils.writeStringToFile(new File("jsonText"),obj.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public static void main(String[] args){
+		writeJSon();
+		readJSON();
+	}
+
+	public static void readJSON(){
+
+		JSONParser parser=new JSONParser();
+		try {
+			String s = FileUtils.readFileToString(new File("jsonText"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try{
+
+			Object obj = parser.parse(s);
+			JSONObject js = (JSONObject)obj;
+			int timeLapse = Integer.parseInt(js.get("timeLapse") + "");
+			System.out.println(++timeLapse);
+
+
+			System.out.println(obj);
+		}catch(ParseException pe){
+			System.out.println("position: " + pe.getPosition());
+			System.out.println(pe);
+		}
+
+	}
+}

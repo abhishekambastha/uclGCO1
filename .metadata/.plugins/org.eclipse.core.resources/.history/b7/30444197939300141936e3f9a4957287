@@ -1,0 +1,23 @@
+import java.awt.Dimension;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
+
+public class ControlPanel extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public ControlPanel(){
+		Dimension size = getPreferredSize();
+		size.width = 200;
+		setPreferredSize(size);
+		
+		setBorder(BorderFactory.createTitledBorder("Hello"));
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+
+public class MainFrame extends JFrame{
+	public MainFrame(String title){
+		super(title);
+		
+		//Set Layout Manager
+		setLayout(new BorderLayout());
+		
+		//Create the Swing Component
+		JTextArea txt = new JTextArea();
+		//Add swing components
+	}
+
+}

@@ -1,0 +1,7 @@
+package simpleMode;
+
+import javax.swing.JPanel;
+
+public class SimpleMode extends JPanel {
+
+}

@@ -1,0 +1,70 @@
+package application;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+
+
+public class MainMenu extends JPanel {
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	JLabel timerMode = new JLabel();
+	JLabel snap = new JLabel();
+	JLabel settings = new JLabel();
+	JLabel soundMode = new JLabel();
+	
+	public MainMenu() {
+		
+//		setBackground(Color.BLACK);
+//		setForeground(Color.WHITE);
+		
+		setLayout(new GridLayout(2,2));
+		
+		Image timer = new ImageIcon(this.getClass().getResource("/timer.png")).getImage();
+		timerMode.setIcon(new ImageIcon(timer));
+		timerMode.setHorizontalAlignment(JLabel.CENTER);
+		add(timerMode);
+		
+		Image simple = new ImageIcon(this.getClass().getResource("/simple.png")).getImage();
+		snap.setIcon(new ImageIcon(simple));
+		snap.setHorizontalAlignment(JLabel.CENTER);
+		add(snap);
+		
+		Image settingsI = new ImageIcon(this.getClass().getResource("/settings.png")).getImage();
+		settings.setIcon(new ImageIcon(settingsI));
+		settings.setHorizontalAlignment(JLabel.CENTER);
+		add(settings);
+		
+		Image sound = new ImageIcon(this.getClass().getResource("/sound.png")).getImage();
+		soundMode.setIcon(new ImageIcon(sound));
+		soundMode.setHorizontalAlignment(JLabel.CENTER);
+		add(soundMode);
+		
+	}
+	
+	public JLabel getTimerMode() {
+		return timerMode;
+	}
+
+	public JLabel getSnap() {
+		return snap;
+	}
+
+	public JLabel getSettings() {
+		return settings;
+	}
+
+	public JLabel getSoundMode() {
+		return soundMode;
+	}
+
+}

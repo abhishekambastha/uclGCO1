@@ -1,0 +1,145 @@
+import java.awt.CardLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import timeLapseMode.TimeLapse;
+
+
+
+public class Home implements ActionListener {
+	
+	
+	JFrame frame = new JFrame("SnapIt");
+	
+	//Instantiate base JPanel
+	JPanel controller = new JPanel();
+	
+	// instantiate MainPage class
+	MainPage main = new MainPage();
+	
+	//instantiate simple window 
+	Simple simple = new Simple();
+	
+	SoundMode sound = new SoundMode();
+	
+	TimeLapse tl = new TimeLapse();
+	
+	CardLayout cl = new CardLayout();
+	
+	public Home(){
+			
+		controller.setLayout(cl);
+		
+		//Add MainPage to controller and assign identifier "1"
+		controller.add(main,"1");
+		
+		//Add simple to controller and assign "2"
+		controller.add(simple,"2");
+		
+		controller.add(sound,"3");
+		
+		controller.add(tl,"4");
+		
+		//show 
+		cl.show(controller, "1");
+		
+		main.getSnap().addMouseListener(new MouseAdapter(){ 
+			
+			@Override
+			public void mouseClicked(MouseEvent args) {
+				cl.show(controller, "2");
+				
+			}
+			
+		});
+		
+		main.getSoundMode().addMouseListener(new MouseAdapter(){ 
+			
+			@Override
+			public void mouseClicked(MouseEvent args) {
+				cl.show(controller, "3");	
+			}		
+		});
+	
+	
+		//Should use ButtonGetter Method from Simple class
+		simple.getNavToHome().addMouseListener(new MouseAdapter(){
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.show(controller, "1");
+				
+			}
+			
+		});
+		
+		sound.getHome1().addMouseListener(new MouseAdapter(){
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.show(controller, "1");
+				
+			}
+			
+		});
+		
+		tl.getHome3().addMouseListener(new MouseAdapter(){
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.show(controller, "1");
+				
+			}
+			
+		});
+		
+		main.getTimerMode().addMouseListener(new MouseAdapter(){
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cl.show(controller, "4");
+				
+			}
+			
+		});
+		
+		
+		frame.getContentPane().add(controller);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setBounds(0, 0, 853, 698);
+		
+	}
+	
+
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new Home();						
+			}
+		});
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	
+
+	
+	
+}

@@ -1,0 +1,15 @@
+package application;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class StatusBar extends JPanel {
+
+	public StatusBar(){
+		JLabel title = new JLabel("SnapIT");
+		JButton btn = new JButton("Show/Hide");
+		add(title);
+		add(btn);
+	}
+}

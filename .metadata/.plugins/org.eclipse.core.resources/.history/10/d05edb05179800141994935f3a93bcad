@@ -1,0 +1,15 @@
+package application;
+
+public enum StatusEnum {
+	BACK("back"), HOME("home");
+
+	private final String op;
+
+	StatusEnum(String modeName){
+		this.modeName = modeName;
+	}
+
+	String getMode(){
+		return modeName;
+	}
+}

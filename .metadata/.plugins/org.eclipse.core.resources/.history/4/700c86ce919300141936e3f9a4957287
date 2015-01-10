@@ -1,0 +1,17 @@
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+
+
+public class MainFrame extends JFrame{
+	public MainFrame(String title){
+		super(title);
+		
+		//Set Layout Manager
+		setLayout(new BorderLayout());
+		
+		//Create the Swing Component
+		//Add swing components
+	}
+
+}

@@ -1,0 +1,7 @@
+package settimgsMode;
+
+import javax.swing.JPanel;
+
+public class SettingsMode extends JPanel {
+
+}

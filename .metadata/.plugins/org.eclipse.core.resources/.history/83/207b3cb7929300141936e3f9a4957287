@@ -1,0 +1,40 @@
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+
+public class MainFrame extends JFrame{
+	public MainFrame(String title){
+		super(title);
+		
+		//Set Layout Manager
+		setLayout(new BorderLayout());
+		
+		//Create the Swing Component
+		JTextArea txt = new JTextArea();
+		JButton btn = new JButton("Click");
+		
+		//Add swing components
+		Container c = getContentPane();
+		
+		c.add(txt);
+		c.add(btn, BorderLayout.NORTH);\
+		
+		//Add behaviour
+		btn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				txt.append("Hello \n");
+			}
+			
+		});
+	}
+	
+
+}

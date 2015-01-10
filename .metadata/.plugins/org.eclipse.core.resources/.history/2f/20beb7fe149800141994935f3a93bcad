@@ -1,0 +1,14 @@
+package settimgsMode;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class SettingsMode extends JPanel {
+	
+	public SettingsMode(){
+		super();
+		JLabel settingsLabel = new JLabel("This is settings Page");
+		add(settingsLabel);
+	}
+
+}

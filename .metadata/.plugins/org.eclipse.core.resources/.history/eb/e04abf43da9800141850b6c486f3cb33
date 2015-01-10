@@ -1,0 +1,18 @@
+package settingsMode;
+
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class SettingsMode extends JPanel {
+	private static final long serialVersionUID = -1909876781076670357L;
+
+	public SettingsMode(){
+		super();
+		JLabel settingsLabel = new JLabel("This is settings Page");
+		add(settingsLabel);
+		
+		JCheckBox recordActions = new JCheckBox("Record Actions ?");
+	}
+
+}

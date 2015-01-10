@@ -1,6 +1,0 @@
-package exercise5.Ex4;
-
-public class CompDetails {
-	JLabel resultC = new JLabel("Lets see");
-
-}

@@ -1,9 +1,0 @@
-package l04;
-
-public class TestXML {
-
-	public TestXML() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

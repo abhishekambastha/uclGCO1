@@ -1,0 +1,61 @@
+package application;
+
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class TimerMenu extends JPanel implements MouseListener {
+
+	private static final long serialVersionUID = -321640520366017219L;
+	
+	JButton timeWarp;
+	JButton timeLapse;
+	
+	private MenuListener listener;
+	
+	public TimerMenu(){
+		
+		setLayout(new GridLayout(2,0));
+		timeLapse = new JButton();
+		timeWarp = new JButton();
+		
+		Image timeLapseIm = new ImageIcon(this.getClass().getResource("/timeLapse.png")).getImage();
+		timeLapse.setIcon(new ImageIcon(timeLapseIm));
+		
+		Image timeWarpIm = new ImageIcon(this.getClass().getResource("/timeWarp.png")).getImage();
+		timeWarp.setIcon(new ImageIcon(timeWarpIm));
+		
+		timeLapse.setHorizontalAlignment(JLabel.CENTER);
+		timeLapse.setName("timeLapse");
+		timeWarp.setHorizontalAlignment(JLabel.CENTER);
+		timeWarp.setName("timeWarp");
+		add(timeLapse);
+		add(timeWarp);
+		
+		timeLapse.addMouseListener(this);
+		timeWarp.addMouseListener(this);
+	}
+	
+	public void setMenuListener(MenuListener listener){
+		this.listener = listener;
+	}
+
+
+	public void mouseClicked(MouseEvent e) {
+		if(listener != null){
+			listener.MenuPerformed(((JButton)e.getSource()).getName());
+		}
+	}
+	
+	public void mousePressed(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {}
+	public void mouseEntered(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {}
+
+}

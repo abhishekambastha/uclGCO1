@@ -1,0 +1,98 @@
+package Observer;
+
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class MainFrame extends JFrame implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	boolean isTimeWarp = false;
+
+	public MainFrame(String s){
+		super(s);
+		/*JPanel head = new JPanel();
+		JLabel title = new JLabel("SnapIT");
+		JButton btn = new JButton("Show/Hide");
+		head.add(title);
+		head.add(btn);*/
+		
+		StatusBar statusBar = new StatusBar();
+
+		statusBar.addStatusListener(new StatusActionListener(){
+			public void statusActionPerformed(){
+				
+			}
+		});
+		
+		this.setLayout(new BorderLayout());
+
+		JPanel mode = new JPanel();
+		mode.setLayout(new CardLayout());
+		
+		MainMenu main = new MainMenu();
+		timeWarpMode.TimeWarp timeWarp = new timeWarpMode.TimeWarp();
+		soundMode.SoundMode soundMode = new soundMode.SoundMode();
+		timeLapseMode.TimeLapse timeLapse = new timeLapseMode.TimeLapse();
+		
+		
+		mode.add(main, "main");
+		mode.add(timeWarp, "timeWarp");
+		mode.add(soundMode, "soundMode");
+		mode.add(timeLapse, "timeLapse");
+
+		getContentPane().add(statusBar, BorderLayout.NORTH);
+		getContentPane().add(mode, BorderLayout.CENTER);
+
+		CardLayout cards = (CardLayout) mode.getLayout();
+		cards.show(mode, "main");
+
+		/*btn.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				cards.show(mode, "main");
+			} }); */
+
+		main.getSnap().addMouseListener(new MouseAdapter(){ 
+			public void mouseClicked(MouseEvent args) {
+				//cards.show(mode, "2");
+			} });
+
+		main.getSoundMode().addMouseListener(new MouseAdapter(){ 
+			public void mouseClicked(MouseEvent args) {
+				cards.show(mode, "soundMode");
+				
+			}		
+		});
+		
+		main.getTimerMode().addMouseListener(new MouseAdapter(){ 
+			public void mouseClicked(MouseEvent args) {
+				cards.show(mode, "timeWarp");	
+			}		
+		});
+		
+		main.getSettings().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent args){
+				cards.show(mode, "timeLapse");
+			}
+		});
+
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {}
+}

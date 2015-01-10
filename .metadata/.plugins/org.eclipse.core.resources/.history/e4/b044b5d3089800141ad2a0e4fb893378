@@ -1,0 +1,6 @@
+package application;
+
+public enum  ModeEnum {
+	TIMEWARP,TIMELAPSE,TIMERMENU, 
+	SOUNDMODE, SIMPLEMODE, SETTINGS
+}

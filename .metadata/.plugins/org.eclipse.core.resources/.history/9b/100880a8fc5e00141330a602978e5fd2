@@ -1,8 +1,0 @@
-package exercise5.Ex4;
-
-import javax.swing.JLabel;
-
-public class CompDetails {
-	JLabel resultC = new JLabel("Lets see");
-
-}

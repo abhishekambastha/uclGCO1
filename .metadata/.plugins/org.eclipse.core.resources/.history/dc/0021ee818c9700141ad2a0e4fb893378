@@ -1,0 +1,17 @@
+package timeWarpMode;
+
+import java.awt.geom.Point2D;
+
+public class TimeWarpEvent {
+	//Initial and final coordinates
+	private Point2D.Double start;
+	private Point2D.Double end;
+
+	//Control Points
+	private Point2D.Double cp1;
+	private Point2D.Double cp2;
+	
+	private int snaps =0;
+	private double timeInterval;
+
+}

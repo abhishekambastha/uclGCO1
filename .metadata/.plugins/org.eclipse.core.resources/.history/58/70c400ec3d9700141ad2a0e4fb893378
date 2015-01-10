@@ -1,0 +1,193 @@
+package soundMode;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+public class SoundMode extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JLabel ear;
+//	static Recorder recorder = new Recorder();
+//	static Snap snap = new Snap();
+	boolean inRecordingMode = false;
+	static Integer sliderVal = new Integer(50);
+	
+	///Volume Bars
+	static JLabel vol1,vol2, vol3, vol4, vol5;
+	static JLabel vol6, vol7,vol8, vol9, vol10;
+	static ArrayList<javax.swing.JLabel> vols;
+	
+	Image green = new ImageIcon(this.getClass().getResource("/greenVol.png")).getImage();
+	Image yellow = new ImageIcon(this.getClass().getResource("/YelloVol.png")).getImage();
+	Image orange = new ImageIcon(this.getClass().getResource("/orangeVol.png")).getImage();
+	Image red = new ImageIcon(this.getClass().getResource("/redVol.png")).getImage();
+	Image mic = new ImageIcon(this.getClass().getResource("/mic.png")).getImage();
+
+	static JSlider slider;
+	private JButton Start;
+	private JButton help;
+	static Timer timer;
+	static int time = 100;
+
+	public SoundMode() {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS ));
+
+		///Timer will call method to map volume to visuals
+		timer = new Timer(time, taskPerformer);
+		timer.setRepeats(true);
+		
+		ear = new JLabel();
+		ear.setPreferredSize(new Dimension(500,500));
+		ear.setMaximumSize(new Dimension(500,500));
+		ear.setMinimumSize(new Dimension(500,500));
+		ear.setAlignmentX(CENTER_ALIGNMENT);
+		add(ear);
+		ear.setIcon(new ImageIcon(mic));
+
+
+
+		
+		///Slider sets threshold above which beep will be called from Snap
+		slider = new JSlider();
+//		slider.setAlignmentX(CENTER_ALIGNMENT);
+		add(slider);
+		slider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				JSlider source = (JSlider)e.getSource();
+				sliderVal = (source.getValue());		
+			}
+		});
+
+		Start = new JButton("Start Listening");
+//		Start.setAlignmentX(CENTER_ALIGNMENT);
+		Start.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!inRecordingMode){	
+					inRecordingMode = true;
+					Start.setText("Stop Listening");
+				//	recorder.start();
+					timer.start();
+				}else{
+					setBarsInvisible();
+					Start.setText("Start Listening");
+					timer.stop();
+				//	recorder.finish();
+					inRecordingMode = false;
+				}
+			}
+		});
+		add(Start);
+
+		help = new JButton("Help");
+		add(help);
+		
+		///Code can be shortened by placing labels in ArrayList and cycling through to add properties/functions
+		
+		vol1 = new JLabel("");
+		vol1.setBounds(130, 301, 22, 26);
+		add(vol1);
+		vol1.setIcon(new ImageIcon(green));
+		
+		vol2 = new JLabel("");
+		vol2.setBounds(152, 301, 22, 26);
+		add(vol2);
+		vol2.setIcon(new ImageIcon(green));
+		
+		vol3 = new JLabel("");
+		vol3.setBounds(174, 301, 22, 26);
+		add(vol3);
+		vol3.setIcon(new ImageIcon(green));
+		
+		vol4 = new JLabel("");
+		vol4.setBounds(196, 301, 22, 26);
+		add(vol4);
+		vol4.setIcon(new ImageIcon(green));
+		
+		vol5 = new JLabel("");
+		vol5.setBounds(218, 301, 22, 26);
+		add(vol5);
+		vol5.setIcon(new ImageIcon(green));
+		
+		vol6 = new JLabel("");
+		vol6.setBounds(218+22, 300, 22, 26);
+		add(vol6);
+		vol6.setIcon(new ImageIcon(yellow));
+		
+		vol7 = new JLabel("");
+		vol7.setBounds(218+44, 300, 22, 26);
+		add(vol7);
+		vol7.setIcon(new ImageIcon(yellow));
+		
+		vol8 = new JLabel("");
+		vol8.setBounds(218+66, 300, 22, 26);
+		add(vol8);
+		vol8.setIcon(new ImageIcon(orange));
+		
+		vol9 = new JLabel("");
+		vol9.setBounds(218+88, 300, 22, 26);
+		add(vol9);
+		vol9.setIcon(new ImageIcon(red));
+		
+		vol10 = new JLabel("");
+		vol10.setBounds(218+110, 300, 22, 26);
+		add(vol10);
+		vol10.setIcon(new ImageIcon(red));
+		
+		vols = new ArrayList<javax.swing.JLabel>();
+		vols.add(vol1);
+		vols.add(vol2);
+		vols.add(vol3);
+		vols.add(vol4);
+		vols.add(vol5);
+		vols.add(vol6);
+		vols.add(vol7);
+		vols.add(vol8);
+		vols.add(vol9);
+		vols.add(vol10);
+		
+		setBarsInvisible();
+		
+	}
+	
+	public static void setBarsInvisible(){
+		for(int i=0;i<vols.size();i++){
+			vols.get(i).setVisible(false);
+		}
+	}
+
+	static ActionListener taskPerformer = new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+			setBarsInvisible();
+		//	Integer i = new Integer(recorder.getRMS());
+			
+			int i=9;
+			
+			for(int j=0;j<vols.size();j++){
+				if(j*6 < i){
+					vols.get(j).setVisible(true);
+					if(vols.get(j).isVisible() && j*10 > sliderVal){
+						Toolkit.getDefaultToolkit().beep();
+					}
+				}
+			}
+			
+		}
+	};
+	
+}

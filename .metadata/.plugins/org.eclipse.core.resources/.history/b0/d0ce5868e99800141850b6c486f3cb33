@@ -1,0 +1,62 @@
+package settingsMode;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+public class SettingsMode extends JPanel {
+	private static final long serialVersionUID = -1909876781076670357L;
+
+	JCheckBox recordActions;
+	
+	public SettingsMode(){
+		super();
+		
+		setLayout(new GridBagLayout());
+		GridBagConstraints gc = new GridBagConstraints();
+		
+		recordActions = new JCheckBox("Record Actions ?");
+		JLabel settingsLabel = new JLabel("This is settings Page");
+		JButton showStats = new JButton("Show Stats");
+		
+		gc.gridx=0;
+		gc.gridy=0;
+		gc.ipadx=100;
+		gc.ipady=100;
+		gc.anchor = GridBagConstraints.LINE_START;
+		
+		add(settingsLabel, gc);
+		
+		gc.gridx=0;
+		gc.gridy =1;
+		add(recordActions, gc);
+		
+		gc.gridx=0;
+		gc.gridy=2;
+		add(showStats, gc);
+		
+		getJSON();
+		
+		recordActions.addChangeListener(new ChangeListener(){
+
+			public void stateChanged(ChangeEvent e) {
+				helper.JSONhandle.setEnabled(recordActions.isSelected());
+				System.out.println(recordActions.isSelected());
+			}
+			
+		});
+	}
+	
+	public void getJSON(){
+//		recordActions.set
+		
+		recordActions.setSelected(helper.JSONhandle.getEnabled());
+	}
+
+}

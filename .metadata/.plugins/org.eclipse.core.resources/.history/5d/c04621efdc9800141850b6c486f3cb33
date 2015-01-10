@@ -1,0 +1,31 @@
+package helper;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.simple.JSONObject;
+
+public class JSONhandle {
+	 public static void main(String[] args) 
+	   {
+	      JSONObject obj = new JSONObject();
+
+	      Map<String, String> map = new HashMap<String,String>();
+	      map.put("foo", "foofof");
+	      
+	      obj.putAll(map);
+	      obj.put("name","foo");
+
+	      StringWriter out = new StringWriter();
+	      
+	      try {
+			obj.writeJSONString(out);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	      
+	      String jsonText = out.toString();
+	      System.out.print(jsonText);
+	   }
+}

@@ -1,0 +1,12 @@
+package helper;
+
+import java.awt.event.MouseEvent;
+
+import javax.swing.event.MouseInputAdapter;
+
+public class MouseDrag extends MouseInputAdapter {
+	public void mousePressed(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {}
+	public void mouseDragged(MouseEvent e) {}
+
+}

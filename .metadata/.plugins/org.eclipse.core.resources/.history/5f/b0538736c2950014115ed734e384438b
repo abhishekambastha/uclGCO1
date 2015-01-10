@@ -1,0 +1,80 @@
+package modes;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.awt.geom.CubicCurve2D;
+import java.awt.geom.Point2D;
+
+import javax.swing.JButton;
+import javax.swing.JComponent;
+
+public class Bezier extends JComponent implements MouseMotionListener{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 345469583829550651L;
+
+
+	CubicCurve2D c = new CubicCurve2D.Double();
+	Point2D.Double start = new Point2D.Double(0, 400);
+	Point2D.Double end = new Point2D.Double(400,0);
+
+	//Control Points
+	Point2D.Double cp1 = new Point2D.Double(400, 400);
+	Point2D.Double cp2 = new Point2D.Double(0, 0);
+	
+	
+	public Bezier(){
+		super();
+		JButton btn1 = new JButton("btn1");
+		Insets insets = this.getInsets();
+		Dimension size = btn1.getPreferredSize();
+		btn1.setBounds(25 + insets.left, 5 + insets.top, size.width, size.height);
+		
+		setLayout(new BorderLayout());
+		add(btn1, BorderLayout.SOUTH);
+	}
+
+
+	@Override
+	public void paint(Graphics g){
+		Graphics2D g2 = (Graphics2D)g;
+
+		// draw CubicCurve2D.Double with set coordinates
+		c.setCurve(start, cp1, cp2, end);
+		g2.draw(c);
+		
+		
+	}
+
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		Point p = e.getLocationOnScreen();
+
+		Point init = e.getComponent().getLocationOnScreen() ;
+		Point fin = e.getComponent().getLocation();
+
+		//Offset
+		double x = init.getX() - fin.getX();
+		double y  = init.getY() - fin.getY();
+		p.setLocation(p.getX()-x-15, p.getY()-y-5);
+
+		e.getComponent().setLocation(p);
+	}
+
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

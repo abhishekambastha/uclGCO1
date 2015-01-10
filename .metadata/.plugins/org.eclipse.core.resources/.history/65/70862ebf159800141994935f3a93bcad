@@ -1,0 +1,15 @@
+package simpleMode;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class SimpleMode extends JPanel {
+	public SimpleMode(){
+		JButton simple = new JButton("Snap");
+		setLayout(new BorderLayout());
+		add(simple);
+	}
+
+}

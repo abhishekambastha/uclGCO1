@@ -1,0 +1,71 @@
+package application;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+
+
+public class MainMenu extends JPanel implements MouseListener {
+	private static final long serialVersionUID = 1L;
+	
+	JButton timerMenu = new JButton();
+	JLabel snap = new JLabel();
+	JLabel settings = new JLabel();
+	JLabel soundMode = new JLabel();
+	
+	private MenuListener listener;
+	
+	public MainMenu() {
+		setLayout(new GridLayout(2,2));
+		
+		Image timer = new ImageIcon(this.getClass().getResource("/timer.png")).getImage();
+		timerMenu.setIcon(new ImageIcon(timer));
+		timerMenu.setHorizontalAlignment(JLabel.CENTER);
+		timerMenu.setName("timerMenu");
+		add(timerMenu);
+		
+		
+		Image simple = new ImageIcon(this.getClass().getResource("/simple.png")).getImage();
+		snap.setIcon(new ImageIcon(simple));
+		snap.setHorizontalAlignment(JLabel.CENTER);
+		add(snap);
+		
+		Image settingsI = new ImageIcon(this.getClass().getResource("/settings.png")).getImage();
+		settings.setIcon(new ImageIcon(settingsI));
+		settings.setHorizontalAlignment(JLabel.CENTER);
+		add(settings);
+		
+		Image sound = new ImageIcon(this.getClass().getResource("/sound.png")).getImage();
+		soundMode.setIcon(new ImageIcon(sound));
+		soundMode.setHorizontalAlignment(JLabel.CENTER);
+		soundMode.setName("soundMode");
+		add(soundMode);
+		
+		soundMode.addMouseListener(this);
+		timerMenu.addMouseListener(this);
+		
+	}
+	
+	public void setMenuListener(MenuListener listener){
+		this.listener = listener;
+	}
+	
+	public void mouseClicked(MouseEvent e) {
+		if(listener != null){
+			listener.MenuPerformed(((JLabel)e.getSource()).getName());
+		}
+	}
+	
+	public void mousePressed(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {}
+	public void mouseEntered(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {}
+	
+
+}
